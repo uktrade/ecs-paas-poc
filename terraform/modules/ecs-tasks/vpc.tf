@@ -1,3 +1,8 @@
+locals {
+  vpc_tags = {
+  }
+}
+
 resource "aws_subnet" "dit_paas_cluster_private" {
   vpc_id = var.vpc_id
   cidr_block = "${var.vpc_cidr_network_octets}.1.0/25"
