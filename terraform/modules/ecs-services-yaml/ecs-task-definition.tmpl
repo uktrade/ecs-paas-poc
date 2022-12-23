@@ -1,0 +1,27 @@
+[
+    {
+        "environment": [
+            { "name": "PORT", "value": "8000" },
+            { "name": "DATABASE_PORT", "value": "5432" }
+        ],
+        "name": "${application_name}",
+        "image": "${task_image}",
+        "mountPoints": [],
+        "portMappings": [{
+            "containerPort": ${application_port},
+            "hostPort": ${application_port},
+            "protocol": "tcp"
+        }],
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-create-group": "true",
+                "awslogs-region": "${aws_region}",
+                "awslogs-group": "paas-ecs-poc",
+                "awslogs-stream-prefix": "ecs"
+            }
+        },
+        "volumesFrom": [],
+        "essential": true
+    }
+]
